@@ -2,7 +2,7 @@ class Perfomance < ApplicationRecord
 
   validates :title, :start_date, :finish_date, presence: true
 
-  validate :check_date_uniqueness, :end_date_is_after_start_date
+  validate :check_date_uniqueness, :finish_date_is_after_start_date
 
   private
 
@@ -14,7 +14,7 @@ class Perfomance < ApplicationRecord
     end
   end
 
-  def end_date_is_after_start_date
+  def finish_date_is_after_start_date
     return if start_date.blank? || finish_date.blank?
 
     if self.finish_date < self.start_date
