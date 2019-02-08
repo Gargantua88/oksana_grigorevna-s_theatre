@@ -1,24 +1,38 @@
-# README
+## Тестовое API на Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Задание
+### Театр Оксаны Григорьевны
+Мы делаем сайт для, небольшого, провинциального театра. Город N, в котором находится театр маленький, публики не много, поэтому спектакли проводятся строго один раз в день, в 19:00.
+Нам прежде всего предстоит реализовать афишу. У нас есть администратор театра, Оксана Григорьевна, уважаемая женщина. Она и будет вносить расписание спектаклей.
+Спектакль характеризуется свойствами:
+Название
+Дата начала (19-02-2019)
+Дата окончания (21-03-2019)
+У нас методы create, index, delete.
+При добавлении нового спектакля, если у нас есть уже спектакль на эти даты - мы выводим ошибку.
+Систему авторизации писать не нужно, мы просто закроем доступ к методам create\delete средставми nginx в дальнейшем.
 
-Things you may want to cover:
+## Запуск
+3. Выполните `bundle install`
+4. Выполните `rails db:migrate`
 
-* Ruby version
+## Формат запросов
 
-* System dependencies
+Для получение списка всех спектаклей отправьте GET запрос на *[host]/perfomances*
+```
+[host]/perfomances
+```
 
-* Configuration
+Для добавления нового спектакля отправьте POST запрос на *[host]/perfomances*
+с 3 параметрами(название(**title**), дата начала(**start_date**),
+дата окончания(**finish_date**))
 
-* Database creation
+Даты в параметры передаются полностью(ДД.ММ.ГГГГ):
+```
+[host]/perfomances?perfomance[title]=King Lear&perfomance[start_date]=01.01.2019&perfomance[finish_date]=02.03.2019
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Для удаления спектакля из базы отправьте DELETE запрос на *[host]/conversions/[perfomance_id]* 
+```
+[host]/perfomances/22
+```
