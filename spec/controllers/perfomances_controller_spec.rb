@@ -31,7 +31,6 @@ RSpec.describe PerfomancesController, type: :controller do
       post :create, params: {perfomance: @correct_params1}
 
       expect(Perfomance.where(@correct_params1).count).to eq 1
-      expect(Perfomance.first.title).to eq 'The Cherry Orchard'
     end
 
     it 'doesnt creates without title' do
