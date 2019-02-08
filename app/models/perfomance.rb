@@ -17,7 +17,7 @@ class Perfomance < ApplicationRecord
   def finish_date_is_after_start_date
     return if start_date.blank? || finish_date.blank?
 
-    if self.finish_date < self.start_date
+    if finish_date < start_date
       errors.add(:end_date, 'Оксана Григорьевна, проверьте даты!')
     end
   end
